@@ -11,6 +11,7 @@
   ghostscript,
   mermaid-cli,
   imagemagick,
+  lua-language-server,
 
   fetchFromGitHub,
 
@@ -43,6 +44,11 @@
     LazyVim
     rustaceanvim
     tokyonight-nvim
+    plenary-nvim
+    catppuccin-nvim
+    nix-develop-nvim
+    base46
+    nvchad
   ];
 
   foldPlugins = builtins.foldl' (
@@ -84,6 +90,7 @@ in
       ghostscript
       mermaid-cli
       imagemagick
+      lua-language-server
     ];
     nativeBuildInputs = [
       makeWrapper
