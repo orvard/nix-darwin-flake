@@ -16,16 +16,23 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, rust-overlay }:
   let
-    rustpkgs = import nixpkgs {
-      inherit localSystem;
+    localSystem = "aarch64-apple-darwin";
+    pkgs = import nixpkgs {
+      localSystem = localSystem;
       overlays = [ (import rust-overlay) ];
     };
-    rustToolchain = rustpkgs.pkgsBuildHost.rust-bin.nightly.latest.default.override {
+    rustToolchain = pkgs.pkgsBuildHost.rust-bin.nightly."2026-02-01".default.override {
       targets = [
         "aarch64-unknown-linux-gnu"
       ];
       extensions = [
-        "complete"
+        "rust-src"
+        "rust-docs"
+        "rustfmt"
+        "rust-std"
+        "cargo"
+        "rust-analyzer"
+        "clippy"
       ];
     };
     configuration = { pkgs, my-neovim, ... }: {
@@ -40,6 +47,7 @@
           pkgs.kitty
           pkgs.diceware
 
+          rustToolchain
         ];
 
       # Necessary for using flakes on this system.
