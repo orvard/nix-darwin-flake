@@ -3,6 +3,7 @@
   fd,
   fzf,
   ripgrep,
+  clang,
   curl,
   git,
   tree-sitter,
@@ -89,6 +90,7 @@ in
     paths = [
       neovim-unwrapped
 
+      clang
       curl
       fd
       fzf
