@@ -3,6 +3,7 @@
   fd,
   fzf,
   ripgrep,
+  curl,
   git,
   tree-sitter,
   luarocks,
@@ -11,6 +12,8 @@
   mermaid-cli,
   imagemagick,
 
+  fetchFromGitHub,
+
   symlinkJoin,
   neovim-unwrapped,
   makeWrapper,
@@ -18,6 +21,17 @@
   vimPlugins,
   lib,
 }: let
+  #specific-tree-sitter = tree-sitter.overrideAttrs (old: {
+  #  version = "0.26.3";
+  #  src = fetchFromGitHub {
+  #    owner = "tree-sitter";
+  #    repo = "tree-sitter";
+  #    tag = "v0.26.3";
+  #    hash = "sha256-G1C5IhRIVcWUwEI45ELxCKfbZnsJoqan7foSzPP3mMg=";
+  #    fetchSubmodules = true;
+  #  };
+  #});
+
   packageName = "my-neovim";
 
   startPlugins = with vimPlugins; [
@@ -27,6 +41,8 @@
     lazy-nvim
     lazygit-nvim
     LazyVim
+    rustaceanvim
+    tokyonight-nvim
   ];
 
   foldPlugins = builtins.foldl' (
@@ -57,6 +73,7 @@ in
     paths = [
       neovim-unwrapped
 
+      curl
       fd
       fzf
       ripgrep
