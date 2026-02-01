@@ -96,6 +96,12 @@ in
       makeWrapper
     ];
     postBuild = ''
+      #wrapProgram $out/bin/nvim \
+      #  --argv0 nvim-lazy \
+      #  --add-flags '--cmd' \
+      #  --add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
+      #  --set-default NVIM_APPNAME nvim-lazy
+      
       wrapProgram $out/bin/nvim \
         --add-flags '-u' \
         --add-flags '${./init.lua}' \

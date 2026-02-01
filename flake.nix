@@ -46,6 +46,7 @@
           pkgs.nerd-fonts.monoid
           pkgs.kitty
           pkgs.diceware
+          pkgs.tree
 
           rustToolchain
         ];
