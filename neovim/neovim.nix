@@ -61,6 +61,8 @@
     nix-develop-nvim
     solarized-nvim
     nvchad
+    markdown-preview-nvim
+    neogit
   ];
 
   foldPlugins = builtins.foldl' (
