@@ -4,6 +4,7 @@ require("lazy").setup({
                 { "mason-org/mason-lspconfig.nvim", enabled = false },
                 { "mason-org/mason.nvim", enabled = false },
 		{ "mrcjkb/rustaceanvim", enabled = true },
+		{ "ibhagwan/fzf-lua", enabled = true },
 	}
 })
 

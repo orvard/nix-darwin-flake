@@ -6,12 +6,14 @@
   curl,
   git,
   tree-sitter,
+  tree-sitter-grammars,
   luarocks,
   tectonic,
   ghostscript,
   mermaid-cli,
   imagemagick,
   lua-language-server,
+  rustPlatform,
 
   fetchFromGitHub,
 
@@ -22,22 +24,29 @@
   vimPlugins,
   lib,
 }: let
-  #specific-tree-sitter = tree-sitter.overrideAttrs (old: {
-  #  version = "0.26.3";
-  #  src = fetchFromGitHub {
-  #    owner = "tree-sitter";
-  #    repo = "tree-sitter";
-  #    tag = "v0.26.3";
-  #    hash = "sha256-G1C5IhRIVcWUwEI45ELxCKfbZnsJoqan7foSzPP3mMg=";
-  #    fetchSubmodules = true;
-  #  };
-  #});
+  specific-tree-sitter = tree-sitter.overrideAttrs (old: rec {
+    version = "0.26.3";
+    src = fetchFromGitHub {
+      owner = "tree-sitter";
+      repo = "tree-sitter";
+      tag = "v0.26.3";
+      hash = "sha256-G1C5IhRIVcWUwEI45ELxCKfbZnsJoqan7foSzPP3mMg=";
+      fetchSubmodules = true;
+    };
+    cargoDeps = rustPlatform.fetchCargoVendor {
+      inherit src;
+      hash = "sha256-kHYLaiCHyKG+DL+T2s8yumNHFfndrB5aWs7ept0X4CM=";
+    };
+
+    patches = [];
+  });
 
   packageName = "my-neovim";
 
   startPlugins = with vimPlugins; [
     telescope-nvim
     nvim-treesitter.withAllGrammars
+    nvim-dap
     fzf-lua
     lazy-nvim
     lazygit-nvim
@@ -84,7 +93,8 @@ in
       fzf
       ripgrep
       git
-      tree-sitter
+      specific-tree-sitter
+      tree-sitter-grammars.tree-sitter-rust
       luarocks
       tectonic
       ghostscript
