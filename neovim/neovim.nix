@@ -43,6 +43,7 @@
 
   packageName = "my-neovim";
 
+  # Gotta do `:TSInstall rust` to get it going...
   startPlugins = with vimPlugins; [
     telescope-nvim
     nvim-treesitter.withAllGrammars
