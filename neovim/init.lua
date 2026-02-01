@@ -3,6 +3,7 @@ require("lazy").setup({
                 { "LazyVim/LazyVim", import = "lazyvim.plugins" },
                 { "mason-org/mason-lspconfig.nvim", enabled = false },
                 { "mason-org/mason.nvim", enabled = false },
+		{ "mrcjkb/rustaceanvim", enabled = true },
 	}
 })
 
