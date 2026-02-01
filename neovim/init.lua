@@ -5,6 +5,7 @@ require("lazy").setup({
                 { "mason-org/mason.nvim", enabled = false },
 		{ "mrcjkb/rustaceanvim", enabled = true },
 		{ "ibhagwan/fzf-lua", enabled = true },
+		{ "maxmx03/solarized.nvim", enabled = true },
 	}
 })
 

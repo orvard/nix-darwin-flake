@@ -4,6 +4,7 @@
   fzf,
   ripgrep,
   clang,
+  libclang,
   curl,
   git,
   tree-sitter,
@@ -58,7 +59,7 @@
     plenary-nvim
     catppuccin-nvim
     nix-develop-nvim
-    base46
+    solarized-nvim
     nvchad
   ];
 
@@ -91,6 +92,7 @@ in
       neovim-unwrapped
 
       clang
+      libclang
       curl
       fd
       fzf
