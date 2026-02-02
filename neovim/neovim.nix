@@ -16,6 +16,7 @@
   imagemagick,
   lua-language-server,
   rustPlatform,
+  nixd,
 
   fetchFromGitHub,
 
@@ -108,6 +109,7 @@ in
       mermaid-cli
       imagemagick
       lua-language-server
+      nixd
     ];
     nativeBuildInputs = [
       makeWrapper
